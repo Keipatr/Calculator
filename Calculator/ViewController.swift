@@ -140,6 +140,8 @@ class ViewController: UIViewController {
                 if simbol == ""
                 {
                     cekPersen = false;
+                    cekKoma = false;
+                    cekMinus = false;
                     first = "";
                     if first.prefix(2) == "-0" && !cekKoma
                     {
@@ -162,6 +164,8 @@ class ViewController: UIViewController {
                 else if simbol != "" && !cekResult
                 {
                     cekPersen = false;
+                    cekKoma = false;
+                    cekMinus = false;
                     second = "";
                     if second.prefix(2) == "-0" && !cekKoma
                     {
@@ -184,6 +188,8 @@ class ViewController: UIViewController {
                 else if simbol != "" && cekResult
                 {
                     cekPersen = false;
+                    cekKoma = false;
+                    cekMinus = false;
                     afterResult = "";
                     if afterResult.prefix(2) == "-0" && !cekKoma
                     {

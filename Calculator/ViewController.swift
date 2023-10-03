@@ -52,14 +52,17 @@ class ViewController: UIViewController {
     @IBAction func hasil(_ sender: Any) {
         result = String(hitung());
         let pisah = result.components(separatedBy: ".")
-        if pisah[1] == "0"
-        {
-            lbResult.text = pisah[0];
-        }
-        else
-        {
-            lbResult.text = result;
-        }
+        
+            if pisah[1] == "0"
+            {
+                lbResult.text = pisah[0];
+            }
+            else
+            {
+                lbResult.text = result;
+            }
+        
+        
         afterResult = "";
         autoFont();
     }
@@ -494,6 +497,10 @@ class ViewController: UIViewController {
     }
     
     func hitung() -> Double {
+        if simbol != "" && first == "" && second == "" && afterResult == ""
+        {
+            return 0
+        }
         if simbol == "+"
         {
             if !cekResult {
@@ -517,12 +524,17 @@ class ViewController: UIViewController {
             else{
                 if afterResult == ""
                 {
-                    if second == ""
+                    if first == ""
+                    {
+                        btnClear.setTitle("C", for: .normal);
+                        return Double(result)! + Double(second)!
+                    }
+                    else if second == ""
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! + Double(first)!
                     }
-                    else if first == ""
+                    else
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! + Double(second)!
@@ -557,12 +569,17 @@ class ViewController: UIViewController {
             else{
                 if afterResult == ""
                 {
-                    if second == ""
+                    if first == ""
+                    {
+                        btnClear.setTitle("C", for: .normal);
+                        return Double(result)! - Double(second)!
+                    }
+                    else if second == ""
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! - Double(first)!
                     }
-                    else if first == ""
+                    else
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! - Double(second)!
@@ -597,12 +614,17 @@ class ViewController: UIViewController {
             else{
                 if afterResult == ""
                 {
-                    if second == ""
+                    if first == ""
+                    {
+                        btnClear.setTitle("C", for: .normal);
+                        return Double(result)! * Double(second)!
+                    }
+                    else if second == ""
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! * Double(first)!
                     }
-                    else if first == ""
+                    else
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! * Double(second)!
@@ -637,12 +659,17 @@ class ViewController: UIViewController {
             else{
                 if afterResult == ""
                 {
-                    if second == ""
+                    if first == ""
+                    {
+                        btnClear.setTitle("C", for: .normal);
+                        return Double(result)! / Double(second)!
+                    }
+                    else if second == ""
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! / Double(first)!
                     }
-                    else if first == ""
+                    else
                     {
                         btnClear.setTitle("C", for: .normal);
                         return Double(result)! / Double(second)!
@@ -654,7 +681,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        else if simbol == ""
+        else if simbol == "" && first != ""
         {
             return Double(first)!
         }
